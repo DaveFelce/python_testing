@@ -396,7 +396,8 @@ print(l3)
 # Complex comprehension
 # It's basically saying 'append x to all for x in t[1], for each t in tests'
 # So the outer 'for' in the comprehension goes in the innermost level of the explicit loop
-#
+# But notice how the 'append' bit is a the beginning of the comprehension, then everything else
+# follows the order of outer->inner loops
 tests = [ ("foo",['a','b','c']), ("bar",['d','e','f']) ]
 # all = [x for x in t[1] for t in tests]
 all = [x for t in tests for x in t[1]]
