@@ -361,6 +361,58 @@ list_fizz_gen2 = list(fizz_gen_obj2)
 # list_fizz_gen2.append('Ballz')
 print(list_fizz_gen2)
 
+
+l1 = ['one', 'two', 'three', 'four']
+l2 = ['five', 'six', 'seven', 'eight']
+
+l3 = [x for x in l1 for y in l2]
+print(l3)
+# prints: ['one', 'one', 'one', 'one', 'two', 'two', 'two', 'two', 'three', 'three', 'three', 'three', 'four', 'four', 'four', 'four']
+# Is the equivalent of:
+
+l3 = []
+for x in l1:
+    for y in l2:
+        l3.append(x)
+
+print(l3)
+
+# Same thing again but with y
+l1 = ['one', 'two', 'three', 'four']
+l2 = ['five', 'six', 'seven', 'eight']
+
+l3 = [y for x in l1 for y in l2]
+print(l3)
+# prints:['five', 'six', 'seven', 'eight', 'five', 'six', 'seven', 'eight', 'five', 'six', 'seven', 'eight', 'five', 'six', 'seven', 'eight']
+# Is the equivalent of:
+
+l3 = []
+for x in l1:
+    for y in l2:
+        l3.append(y)
+
+print(l3)
+
+# Complex comprehension
+# It's basically saying 'append x to all for x in t[1], for each t in tests'
+# So the outer 'for' in the comprehension goes in the innermost level of the explicit loop
+#
+tests = [ ("foo",['a','b','c']), ("bar",['d','e','f']) ]
+# all = [x for x in t[1] for t in tests]
+all = [x for t in tests for x in t[1]]
+print(all)
+
+# Is the same as:
+all = []
+for t in tests:
+    for x in t[1]:
+        all.append(x)
+
+print(all)
+
+
+
+
 class TestFizzBuzz(unittest.TestCase):
 
     def test_equality(self):
