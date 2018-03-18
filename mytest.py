@@ -397,8 +397,15 @@ print(l3)
 # It's basically saying 'append x to all for x in t[1], for each t in tests'
 # So the outer 'for' in the comprehension goes in the innermost level of the explicit loop
 # But notice how the 'append' bit is a the beginning of the comprehension, then everything else
-# follows the order of outer->inner loops
-# See page 606 of Learning Python for formal syntax explanation
+# follows the order of outer->inner loops. Also, each for loop can have its own condition.
+# See page 606 of Learning Python for formal syntax explanation:
+#
+# [ expression for target1 in iterable1 if condition1
+#              for target2 in iterable2 if condition2...
+#              for targetN in iterableN if conditionN ]
+#
+# set and dictionary comprehensions and generator expressions follow same pattern, although
+# dictionary comprehension has two expressions, key and value separated by a colon
 tests = [ ("foo",['a','b','c']), ("bar",['d','e','f']) ]
 # all = [x for x in t[1] for t in tests]
 all = [x for t in tests for x in t[1]]
